@@ -249,7 +249,7 @@ async function message_process(
                   ? `~${sec.toFixed(1)}s`
                   : `${sec.toFixed(1)}s`;
             }
-            return `⬆️ ${inputStr} ⬇️ ${outputStr} | ⏱️ ${timeStr}]`;
+            return `⬆️ ${inputStr} ⬇️ ${outputStr} ⏱️ ${timeStr}]`;
           })(),
       );
       break;
