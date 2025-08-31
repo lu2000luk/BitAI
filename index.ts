@@ -137,6 +137,21 @@ async function message_process(
     case "ping":
       respond("Pong! [ " + Date.now() + " ]");
       break;
+    case "dump":
+      const resp = await fetch("https://paste.rs/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "text/plain",
+        },
+        body: JSON.stringify(memory, null, 2),
+      });
+      if (resp.ok) {
+        const url = await resp.text();
+        respond("Memory dump: " + url);
+      } else {
+        respond("Failed to dump memory.");
+      }
+      break;
     default:
       if (!command) {
         respond(
