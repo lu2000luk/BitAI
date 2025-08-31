@@ -196,19 +196,32 @@ async function message_process(
               .join("<|message|>")
               .trim()
           : text.content) +
-          "\n[🔠 " +
+          "\n[" +
           (() => {
-            const tokens = response.usage?.total_tokens;
-            let tokensStr = "N/A";
-            if (typeof tokens === "number") {
-              if (tokens >= 1000) {
-                const rounded = Math.round(tokens / 100) / 10;
-                tokensStr =
-                  Math.abs(tokens % 1000) > 50
+            const inputTokens = response.usage?.prompt_tokens;
+            const outputTokens = response.usage?.completion_tokens;
+            let inputStr = "N/A";
+            let outputStr = "N/A";
+            if (typeof inputTokens === "number") {
+              if (inputTokens >= 1000) {
+                const rounded = Math.round(inputTokens / 100) / 10;
+                inputStr =
+                  Math.abs(inputTokens % 1000) > 50
                     ? `~${rounded.toFixed(1)}k`
-                    : `${(tokens / 1000).toFixed(1)}k`;
+                    : `${(inputTokens / 1000).toFixed(1)}k`;
               } else {
-                tokensStr = tokens + "";
+                inputStr = inputTokens + "";
+              }
+            }
+            if (typeof outputTokens === "number") {
+              if (outputTokens >= 1000) {
+                const rounded = Math.round(outputTokens / 100) / 10;
+                outputStr =
+                  Math.abs(outputTokens % 1000) > 50
+                    ? `~${rounded.toFixed(1)}k`
+                    : `${(outputTokens / 1000).toFixed(1)}k`;
+              } else {
+                outputStr = outputTokens + "";
               }
             }
             const ms = Date.now() - start_time;
@@ -220,7 +233,7 @@ async function message_process(
                   ? `~${sec.toFixed(1)}s`
                   : `${sec.toFixed(1)}s`;
             }
-            return `${tokensStr} tokens | ⏱️ ${timeStr}]`;
+            return `⬆️ ${inputStr} ⬇️ ${outputStr} | ⏱️ ${timeStr}]`;
           })(),
       );
       break;
