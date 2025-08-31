@@ -1,15 +1,21 @@
-# bitai
+# BitAI
 
-To install dependencies:
+Italian channel wanted it on github, so here it is.
+
+## How to run
+
+Install bun (https://bun.sh/) and run:
 
 ```bash
 bun install
 ```
 
-To run:
+Then run:
 
 ```bash
 bun run index.ts
 ```
 
-This project was created using `bun init` in bun v1.2.10. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+## Envonment variables
+
+AI_KEY = your groq api key
