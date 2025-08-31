@@ -18,4 +18,4 @@ bun run index.ts
 
 ## Envonment variables
 
-AI_KEY = your groq api key
+AI_KEY = your groq (https://console.groq.com/) api key
