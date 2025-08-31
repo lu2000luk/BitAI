@@ -1,0 +1,17 @@
+{
+  "name": "bitai",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.1",
+    "nostr-tools": "^2.16.2",
+    "openai": "^5.16.0"
+  }
+}
