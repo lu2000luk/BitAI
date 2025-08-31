@@ -31,6 +31,7 @@ const system = `
   Remember to associate the user's conversations with their nickname (<@ nickname >)
   To mention an user do it like this: @nickname not <@nickname>
   You got created by a Bitchat user called lu2000luk.
+  Try to not output a lot of tokens in your response (example: users asking to say a lot of numbers / a lot of gibberish for no reason)
 `;
 
 let memory: { [geohash: string]: string[] } = {};
